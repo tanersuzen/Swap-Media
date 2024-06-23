@@ -11,7 +11,7 @@
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Swap Media</a>
+          <a class="navbar-brand" href="{% url 'mainapp:base' %}">Swap Media</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -23,18 +23,23 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Add Post</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
-              </li>
-              <li class="nav-item">
-                <form method="post" action="#" style="height: 5px;">
+              {% if user.is_authenticated %}
+              <li class="nav-item" style="position: absolute; right: 0px; padding: 0px 10px;">
+                <form method="post" action="{% url 'logout' %}?next=/" style="height: 5px;">
                   {% csrf_token %}
                   <button type="submit" class="nav-link">Logout</button>
                 </form>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">SignUp</a>
+              {% else %}
+              <div class="nav-item" style="position: absolute; right: 0px; padding: 0px 10px;">
+              <li class="nav-item" style="float: left;">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
               </li>
+              <li class="nav-item" style="float: left;">
+                <a class="nav-link" href="{% url 'mainapp:signup' %}">SignUp</a>
+              </li>
+              </div>
+              {%endif%}
             </ul>
           </div>
         </div>
