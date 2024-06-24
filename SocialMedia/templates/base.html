@@ -36,7 +36,7 @@
                 <a class="nav-link" href="{% url 'login' %}">Login</a>
               </li>
               <li class="nav-item" style="float: left;">
-                <a class="nav-link" href="{% url 'mainapp:signup' %}">SignUp</a>
+                <a class="nav-link" href="{% url 'mainapp:signup' %}?next=/profileCreate">SignUp</a>
               </li>
               </div>
               {%endif%}
