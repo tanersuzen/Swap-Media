@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="container" style="width: 50%;">
+      <div class="mb-3">
+        <label for="email" class="form-label">E-mail:</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="E-mail Adress">
+      </div>
+      <div class="mb-3">
+        <label for="age" class="form-label">Your Age:</label>
+        <input type="number" class="form-control" id="age" name="age">
+      </div>
+      <div class="mb-3">
+        <label for="profile_image" class="form-label">Upload Profile Photo:</label>
+        <input type="file" class="form-control" id="profile_image" name="profile_image">
+      </div>
+      <div class="mb-3">
+        <label for="cover_image" class="form-label">Upload Cover Photo:</label>
+        <input type="file" class="form-control" id="cover_image" name="cover_image">
+      </div>
+      <div class="mb-3">
+        <label for="info" class="form-label">Description:</label>
+        <textarea type="text" class="form-control" id="exampleFormControlTextarea1" name="info" placeholder="About yourself..." rows="6"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Profile</button>
+    </div>
+  </form>
+
+{% endblock %}
